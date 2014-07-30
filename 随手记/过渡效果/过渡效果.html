@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 50px;
+				line-height: 50px;
+				background: #779307;
+				color: #fff;
+				font-weight: bold;
+				transition: width 0.5s,background 0.5s;
+				-webkit-transition: width 0.5s,background 0.5s;
+			}
+			#div1{
+				transition-timing-function: linear;
+				-webkit-transition-timing-function: linear;
+			}
+			#div2{
+				transition-timing-function: ease;
+				-webkit-transition-timing-function: ease;
+			}
+			#div3{
+				transition-timing-function: ease-in;
+				-webkit-transition-timing-function: ease-in;
+			}
+			#div4{
+				transition-timing-function: ease-out;
+				-webkit-transition-timing-function: ease-out;
+			}
+			#div5{
+				transition-timing-function: ease-in-out;
+				-webkit-transition-timing-function: ease-in-out;
+			}
+			div:hover{
+				width: 300px;
+				background: #2488F5;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1" style="top:100px">linear</div>
+		<div id="div2" style="top: 100px">ease</div>
+		<div id="div3" style="top: 100px">ease-in</div>
+		<div id="div4" style="top: 100px">ease-out</div>
+		<div id="div5" style="top:100px">ease-in-out</div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+		.mode{
+			width: 100px;
+			height: 100px;
+			background: #779307;
+			margin: 50px 0 0 50px;
+			float: left;
+		}
+		.div1{
+			-webkit-transition: 2s;
+			transition: 2s;
+		}
+		.div1:hover{
+			width:200px;
+			height: 200px;
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		.img_div{
+			-webkit-transition:-webkit-transform 2s,width 3s,height 1s;
+			transition: transform 2s,width 2s,height 2s;
+		}
+		.img_div:hover{
+			width:200px;
+			height: 200px;
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+		</style>
+	</head>
+	<body>
+		<div class="mode div1"></div>
+		<img src="../../canvas/chapt5/xiongmao.jpg" class="img_div mode"/>
+		
+	</body>
+</html>

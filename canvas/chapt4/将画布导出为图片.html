@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+			context.save();
+			context.fillRect(50,50,100,100);
+			context.fillStyle=('#f00');
+			context.fillRect(100,100,100,100);
+			context.restore();
+			context.fillRect(150,150,100,100);
+			
+			var dataURL=canvas.get(0).toDataURL();
+//			console.log(dataURL);
+			var img=$('<img />');
+			img.attr('src',dataURL);
+			canvas.replaceWith(img);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+			//globalAlpha
+//			context.fillStyle='#f00';
+//			context.fillRect(50,50,100,100);
+//			context.globalAlpha=0.5;
+//			context.fillStyle='#0f0';
+//			context.fillRect(100,100,100,100);
+
+			context.fillStyle='rgb(63,169,245)';
+			context.fillRect(50,50,100,100);
+//			context.globalCompositeOperation='source-over';//绘制的图形放在现有画布之上
+//			context.globalCompositeOperation='destination-over'; //之下
+//			context.globalCompositeOperation='source-atop';
+//			context.globalCompositeOperation='destination-atop';
+//			context.globalCompositeOperation='source-in';
+//			context.globalCompositeOperation='destination-in';
+  			context.globalCompositeOperation='source-out';
+//			context.globalCompositeOperation='destination-out';
+//			context.globalCompositeOperation='lighter';
+//			context.globalCompositeOperation='copy';
+//			context.globalCompositeOperation='xor';
+			
+			context.fillStyle='rgb(255,123,172)';
+			context.fillRect(100,100,100,100);
+			
+		</script>
+	</body>
+</html>

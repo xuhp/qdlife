@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+			context.shadowBlur=20;
+			context.shadowColor='#ff0';
+			
+//			var img =new Image();
+//			img.src='rect.png';
+				var img=$('<img />');
+				img.attr('src','rect.png');
+				img.load(function(){
+					//加载图片
+//					context.drawImage(img.get(0),0,0,1000,800);
+						//裁剪
+//						context.drawImage(img.get(0),50,50,100,100,50,50,200,200);
+						//阴影
+						context.drawImage(img.get(0),50,50,100,100,100,100,200,200);
+				})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="" />
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#my_div{
+				background:#006DCC;
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="my_div">
+			
+		</div>
+		<script>
+		window.onload=function(){
+			setTimeout(function(){
+				var div = document.getElementById("my_div");
+				console.log(left);
+				div.style.marginLeft = left + "px";
+				if (left < 200){
+				 setTimeout(arguments.callee, 50);
+				}
+			}, 50);
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+			var imageData=context.createImageData(200,200);
+			var pixels=imageData.data;
+			var numPixels=imageData.width*imageData.height;
+			for(var i=0;i<numPixels;i++){
+				pixels[i*4]=random();
+				pixels[i*4+1]=random();
+				pixels[i*4+2]=random();
+				pixels[i*4+3]=random();
+			}
+			context.putImageData(imageData,0,0);
+			function random(){
+				var num;
+				num=Math.floor(Math.random()*256);
+				return num;
+			}
+		</script>
+	</body>
+</html>

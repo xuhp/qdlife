@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			/*book*/
+			.book-container{
+				width: 375px;
+				margin: 0 auto;
+				display: block;
+				-webkit-perspective:1200px;
+				-moz-perspective: 1200px;
+				perspective: 1200px;
+			}
+			.book{
+				z-index: 5;
+				box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+				-webkit-transition:0.75s;
+				-moz-transition:0.75s;
+				transition: 0.75s;
+				
+			}
+			/*Book cover and spine*/
+			.book-cover{
+				position: relative;
+				z-index: 10;
+			}
+			.book-cover img {
+				vertical-align:bottom;
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="book-container">
+			<div class="book">
+				<div class="book-cover">
+					<img src="cover.jpg" /> 
+				</div>
+				<div class="book-spine">
+				</div>
+			</div>
+		</div>
+		<p><a href="http://inspectelement.com/tutorials/create-a-3d-book-animation-with-css/">点击参考网站</a></p>
+	</body>
+</html>

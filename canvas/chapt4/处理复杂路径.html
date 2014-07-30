@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas = $('#myCanvas');
+			var context = canvas.get(0).getContext('2d');
+
+			//context.beginPath();
+			//context.moveTo(100,50);
+			//context.lineTo(150,150);
+			//context.lineTo(50,150);
+			//context.closePath();
+			//context.stroke();
+			//context.fill();
+			
+			//二次贝塞尔曲线
+//			context.lineWidth=5;
+//			context.beginPath();
+//			context.moveTo(50,250);
+//			context.quadraticCurveTo(250,100,450,250);
+//			context.stroke();
+			
+			//三次贝塞尔曲线
+			context.lineWidth=5;
+			context.beginPath();
+			context.moveTo(50,250);
+			context.bezierCurveTo(150,50,350,450,450,250);
+			context.stroke();
+			
+		</script>
+	</body>
+</html>

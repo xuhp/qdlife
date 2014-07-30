@@ -1,0 +1,2 @@
+1.  socket阻塞与非阻塞，同步与异步、I/O模型    http://blog.csdn.net/hguisu/article/details/7453390
+2. 使用异步 I/O 大大提高应用程序的性能    http://www.ibm.com/developerworks/cn/linux/l-async/#ibm-pcon

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas = $('#myCanvas');
+			var context = canvas.get(0).getContext('2d');
+			var gradient = context.createLinearGradient(0, 0, 0, canvas.height());
+			gradient.addColorStop(0, '#f00');
+			gradient.addColorStop(1, '#0f0');
+			context.fillStyle = gradient;
+			context.fillRect(0, 0, canvas.width(), canvas.height());
+			
+			var imageData=context.getImageData(0,0,3,3);
+			var piexl=imageData.data;
+			
+			var red=piexl[0];
+			var green=piexl[1];
+			var blue=piexl[2];
+			var alpha=piexl[3];
+			console.log(red+' >> '+green+' >> '+blue+' >> '+alpha);
+			
+			//颜色拾取器
+			canvas.click(function(e){
+				
+				var canvasOffest=canvas.offset();
+				var canvasX=Math.floor(e.pageX-canvasOffest.left);
+				var canvasY=Math.floor(e.pageY-canvasOffest.top);
+				
+				var imageData=context.getImageData(canvasX,canvasY,1,1);
+				var piexl=imageData.data;
+				var piexlColor='rgba('+piexl[0]+','+piexl[1]+','+piexl[2]+','+piexl[3]+')';
+				$('body').css('background',piexlColor);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">
+		</canvas>
+		<div>
+			<button id="startAnimation">开始</button>
+			<button id="stopAnimatoin">结束</button>
+		</div>
+		<script>
+			$(function(){
+				var canvas=$('#myCanvas');
+				var context=canvas.get(0).getContext('2d');
+				
+				var playAnimation=true;
+				var x=0;
+				
+				var startAnimation=$('#startAnimation');
+				var stopAnimation=$('#stopAnimatoin');
+				var canvasWidth=canvas.width();
+				var canvasHeight=canvas.height();
+				
+				stopAnimation.hide();
+				
+				startAnimation.click(function(){
+					$(this).hide();
+					stopAnimation.show();
+					
+					playAnimation=true;
+					animate();
+				});
+				
+				stopAnimation.click(function(){
+					$(this).hide();
+					startAnimation.show();
+					playAnimation=false;
+				})
+				
+				function animate(){
+					x++;
+					context.clearRect(0,0,canvasWidth,canvasHeight);
+					context.fillRect(x,50,10,10);
+					if(playAnimation){
+						setTimeout(animate,33);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

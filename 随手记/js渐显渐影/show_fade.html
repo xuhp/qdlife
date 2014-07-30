@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#tip_info{
+			}
+		</style>
+	</head>
+	<body>
+		<button id="myButtons">
+			点我
+		</button>
+		<script>
+		  //点击按钮
+		  function click_btn(){
+				var btn=document.getElementById("myButtons")
+				
+				btn.addEventListener('click',function(){
+					var string='领取成功';
+					show_hide(string);
+				})
+		  }
+			//渐显渐影
+			function show_hide(string){
+				var opacity=0;
+				//创建提示元素
+				var tip_info=document.createElement('div');
+				tip_info.setAttribute('id','tip_info');
+				var body=document.getElementsByTagName('body');
+				body[0].appendChild(tip_info);
+				var txt=document.createTextNode(string);
+				tip_info.appendChild(txt);
+				tip_info.style.opacity=opacity;
+				//显示创建信息
+				show(tip_info,opacity)
+			}
+			
+			//显示创建信息
+			function show(elem,opacity){
+				if(opacity<1){
+					setTimeout(function(){
+						opacity=opacity+0.01;
+						elem.style.opacity=opacity;
+						show(elem,opacity);
+					},1)
+				}else{
+					elem.style.opacity=1;
+					setTimeout(function(){
+						//影藏创建信息
+						hide(elem,opacity);
+					},1000);
+				}
+			}
+			
+			//影藏创建信息
+			function hide(elem,opacity){
+				if(opacity>0){
+					setTimeout(function(){
+						opacity=opacity-0.005;
+						elem.style.opacity=opacity;
+						hide(elem,opacity);
+					},1)
+				}else{
+					elem.style.opacity=0;
+					elem.style.display='none';
+					document.getElementsByTagName('body').remove(elem);
+				}
+			}
+			
+			//共享load函数
+			function addLoadEvent(func) {
+				var oldonload = window.onload;
+				if ( typeof window.onload != 'function') {
+					window.onload = func;
+				} else {
+					window.onload = function() {
+						oldonload();
+						func();
+					}
+				}
+			}
+
+			//添加函数
+			addLoadEvent(click_btn);
+		</script>
+	</body>
+</html>

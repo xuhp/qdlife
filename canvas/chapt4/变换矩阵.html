@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+//			context.transform(2,0,0,2,150,150);
+//			context.fillRect(0,0,100,100);
+			
+			context.setTransform(1,0,0,1,0,0);//单位矩阵
+			var xScale=Math.cos(0.7854);
+			var ySkew=-Math.sin(0.7854);//-1
+			var xSKew=Math.sin(0.7854);//1
+			var yScale=Math.cos(0.7854);
+			var xTrans=200;
+			var yTrans=200;
+			
+			context.transform(xScale,ySkew,xSKew,yScale,xTrans,yTrans);
+			context.fillRect(0,0,100,100);
+		</script>
+	</body>
+</html>

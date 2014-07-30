@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		body{
+			padding: 50px;
+		}
+			h3{
+				font-size: 30px;
+				height: 30px;
+				padding: 50px 0 10px;
+			}
+			p{
+				font-size: 60px;
+				font-weight: bold;
+				font-family: '微软雅黑';
+			}
+			b{
+				padding:30px;
+				display: block;
+			}
+			.text_shadow{
+				text-shadow: 1px 1px  2px #000;
+				color: #008000;
+			}
+			.text_3d{
+				text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+							 color:#fff; background:#3699f6;     
+			}
+			.text_light{
+				text-shadow:0 0 20px #ff6600;
+				color: #fff;
+				background: #333;
+			}
+			.text_blur{
+				text-shadow: 0 1px 15px #fff;
+				color: transparent;
+				background: #333;
+			}
+			/*背景色要深于文字颜色*/
+			.text_indent{
+				text-shadow: 0 1px 1px #fff;
+				color: #717171;
+				background: #d3d3d3;
+			}
+			.text_carve{
+				text-shadow: -1px -1px #fff,1px 1px #333;
+				color: #ccc;
+				background:#d3d3d3;
+			}
+			.text-inner-shadow{
+				background: #666;
+				-webkit-background-clip: text;
+				-moz-background-clip: text; 
+				background-clip: text; 
+				color: transparent;
+				text-shadow:  0px 3px 3px rgba(255,255,255,0.5);
+			}
+			.orange::selection{
+				background: #ff6600;
+				color: #fff;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h3>1. 普通</h3>
+		<p class="text_shadow">xuhp</p>
+		<h3>2. 3D</h3>
+		<p class="text_3d">xuhp</p>
+		<h3>3. 外发光</h3>
+		<p class="text_light">xuhp</p>
+		<h3>4. 模糊</h3>
+		<p class="text_blur">xuhp</p>
+		<h3>5. 凹痕</h3>
+		<p class="text_indent">xuhp</p>
+		<h3>6. 浮雕</h3>
+		<p class="text_carve">xuhp</p>
+		<b>结合其他css样式做出的文字效果</b>
+		<h3>内阴影</h3>
+		<p class="text-inner-shadow">xuhp</p>
+		<h3>改变文字选取默认颜色</h3>
+		<p class="orange">xuhp</p>
+	</body>
+</html>

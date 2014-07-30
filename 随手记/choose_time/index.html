@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="" />
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				font-size: 12px;
+			}
+			.choose_time{
+				margin: 200px;
+				position: relative;
+				width:200px;
+			}
+			.date_time div {
+				display: inline-block;
+			}
+			.time_item{
+				margin-left: 5px;
+			}
+			.time_item span {
+				display: inline-block;
+				border: 1px solid #ccc;
+				padding: 2px 3px;
+				cursor: pointer;
+			}
+			.cur_time{
+				margin-top: 10px;
+			}
+			.select_item{
+				position: absolute;
+				background: #FFF;
+				border: 2px solid #09C;
+				width: 168px;
+				left:10px;
+			}
+			.select_item span{
+				line-height: 20px;
+				text-align: center;
+				display: block;
+				float: left;
+				height: 20px;
+				width: 20px;
+				border-bottom: 1px solid #CCC;
+				border-right: 1px solid #CCC;
+			}
+			.select_item span:hover{
+				background-color: #009999;
+				color: #FFF;
+				cursor: pointer;
+			}
+			.select_item .time_selectd{
+				background-color: #009999;
+				color: #FFF;
+				cursor: pointer;
+			}
+			.select_item_hour{
+				top:-75px;
+			}
+			.select_item_minute,.select_item_second{
+				top:-180px;
+			}
+			.data_ui_btn {
+				display: inline-block;
+				margin-left: 5px;
+				padding: 1px 5px;
+				background: #EAEAEA;
+				border: 1px solid #ccc;
+			}
+			.data_ui_btn:hover {
+				background: #FFFFFF;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="choose_time">
+			
+		</div>
+		<script src="../../canvas/jquery.min.js"></script>
+		<script>
+			$(function() {
+				var timeTemp=create_hours();
+				var time_btn=create_time_btn();
+				$('.choose_time').append(timeTemp,time_btn);
+				now_time();
+				
+				//设置为当前时间
+				$('.data_ui_btn_now').click(function(){
+					now_time();
+				})
+				
+				//显示时间选择框
+				$('.data_time_hour span').click(function(){
+					$(".select_item").hide();
+					$('.select_item_hour').show();
+				});
+				$('.data_time_minute span').click(function(){
+					$(".select_item").hide();
+					$('.select_item_minute').show();
+				});
+				$('.data_time_second span').click(function(){
+					$(".select_item").hide();
+					$('.select_item_second').show();
+				});
+				//获取时间
+				$('.select_item_hour span').click(function(){
+					$('.data_time_hour span').text($(this).text());
+					$(this).addClass('time_selectd').siblings('span').removeClass('time_selectd');
+				});
+				$('.select_item_minute span').click(function(){
+					$('.data_time_minute span').text($(this).text());
+					$(this).addClass('time_selectd').siblings('span').removeClass('time_selectd');
+				})
+				$('.select_item_second span').click(function(){
+					$('.data_time_second span').text($(this).text());
+					$(this).addClass('time_selectd').siblings('span').removeClass('time_selectd');
+				})
+				//影藏时间选择框
+				$([window, document.body]).click(hide_select_item);
+				function hide_select_item(event) {
+					if(!$(event.target).parent().hasClass("time_item")){
+						$(".select_item").hide();
+					}
+				}
+					
+				//设置当前时间
+				function now_time() {
+					var myDate,h,m,s;
+					myDate = new Date();
+				  h=myDate.getHours();
+				  m=myDate.getMinutes();
+				  s=myDate.getSeconds();
+				  h=h>9?h:"0"+h;
+				  m=m>9?m:"0"+m;	  
+				  s=s>9?s:"0"+s;
+					
+					$('.data_time_hour span').text(h);
+					$('.data_time_minute span').text(m);
+					$('.data_time_second span').text(s);
+					
+					$('.select_item_hour span').removeClass('time_selectd').eq(h).addClass('time_selectd');
+					$('.select_item_minute span').removeClass('time_selectd').eq(m).addClass('time_selectd');
+					$('.select_item_second span').removeClass('time_selectd').eq(s).addClass('time_selectd');
+				}
+
+				//创建时间选择模块
+				function create_hours() {
+					var hourItem = "", mintueItem = "", secondItem = "", itemNum, m, timeTemp;
+					for ( itemNum = 0; itemNum < 24; itemNum++) {
+						m = itemNum > 9 ? itemNum : "0" + itemNum;
+						hourItem += "<span date='" + m + "'>" + m + "</span>";
+					}
+					for ( itemNum = 0; itemNum < 60; itemNum++) {
+						m = itemNum > 9 ? itemNum : "0" + itemNum;
+						mintueItem += "<span date='" + m + "'>" + m + "</span>";
+					}
+					for ( itemNum = 0; itemNum < 60; itemNum++) {
+						m = itemNum > 9 ? itemNum : "0" + itemNum;
+						secondItem += "<span date='" + m + "'>" + m + "</span>";
+					}
+
+					var timeshow = '<div class="data_time_hour time_item"><span>00</span> 时</div><div class="data_time_minute time_item"><span>00</span> 分</div><div class="data_time_second time_item"><span>00</span> 秒</div>';
+					var timeTemp = '<div class="date_time"><div class="til">时间：</div>' + timeshow + '<div class="select_item select_item_hour" style="display:none;">' + hourItem + '</div><div class="select_item select_item_minute" style="display:none;">' + mintueItem + '</div><div class="select_item select_item_second" style="display:none;">' + secondItem + '</div></div>';
+
+					return timeTemp;
+				}
+
+				//创建操作按钮
+				function create_time_btn() {
+					var time_btn = '<div class="cur_time"><span class="data_ui_btn data_ui_btn_now" >现在时间</span><span class="data_ui_btn data_ui_btn_clear" >清空</span><span class="data_ui_btn data_ui_btn_close" >关闭</span></div>';
+					
+					return time_btn;
+				}
+
+			});
+		</script>
+	</body>
+</html>

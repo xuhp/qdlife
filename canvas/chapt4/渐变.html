@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+//			var gradient=context.createLinearGradient(0,0,0,canvas.height());
+//			gradient.addColorStop(0,'#f00');
+//			gradient.addColorStop(1,'#0f0');
+			
+//			context.fillStyle=gradient;
+//			context.fillRect(0,0,canvas.width(),canvas.height());
+			
+			var canvasW=canvas.width()/2;
+			var canvasH=canvas.height()/2;
+			var gradient=context.createRadialGradient(canvasW,canvasH,0,canvasW,canvasH,250);
+			gradient.addColorStop(0,'#f00');
+			gradient.addColorStop(1,'#0f0');
+			
+			context.fillStyle=gradient;
+			context.fillRect(0,0,canvas.width(),canvas.height())
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			#demo{
+				background: #2488F5;
+				color: #FFFFFF;
+				height: 100px;
+				width: 400px;
+				/*firefox*/
+				display:-moz-box;
+				-moz-box-pack:center;
+				-moz-box-align:center;
+				/*weikit*/
+				display:-webkit-box;
+				-webkit-box-orient: horizontal;
+				-webkit-box-pack:justify;
+				-webkit-box-align:end;
+				/* W3C */
+				display:box;
+				box-pack:center;
+				box-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo">
+			<p>Hello world1</p><p>Hello world2</p>
+		</div>
+	</body>
+</html>

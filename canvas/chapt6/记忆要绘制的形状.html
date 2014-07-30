@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">
+		</canvas>
+		<div>
+			<button id="startAnimation">开始</button>
+			<button id="stopAnimatoin">结束</button>
+		</div>
+		<script>
+			$(function(){
+				var canvas=$('#myCanvas');
+				var context=canvas.get(0).getContext('2d');
+				
+				var playAnimation=true;
+				
+				var startAnimation=$('#startAnimation');
+				var stopAnimation=$('#stopAnimatoin');
+				var canvasWidth=canvas.width();
+				var canvasHeight=canvas.height();
+				
+				stopAnimation.hide();
+				
+				startAnimation.click(function(){
+					$(this).hide();
+					stopAnimation.show();
+					
+					playAnimation=true;
+					animate();
+				});
+				
+				stopAnimation.click(function(){
+					$(this).hide();
+					startAnimation.show();
+					playAnimation=false;
+				})
+				
+				var shape=function(x,y){
+					this.x=x;
+					this.y=y;
+				}
+				
+				var shapes=new Array();
+				shapes.push(new shape(50,50));
+				shapes.push(new shape(100,100));
+				shapes.push(new shape(150,150));
+				var shapesLen=shapes.length;
+				
+				function animate(){
+					context.clearRect(0,0,canvasWidth,canvasHeight);
+					for(var i=0;i<shapesLen;i++){
+						var tempShapes=shapes[i];
+						tempShapes.x+=Math.random()*40-20;
+						tempShapes.y+=Math.random()*40-20;
+						context.fillRect(tempShapes.x,tempShapes.y,10,10);
+					}
+					if(playAnimation){
+						setTimeout(animate,33);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

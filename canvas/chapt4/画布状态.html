@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			$(function(){
+				var canvas=$('#myCanvas');
+				var context=canvas.get(0).getContext('2d');
+				
+				//保存绘图状态
+				context.fillStyle='#f00';
+				context.save();//保存画布状态
+				context.fillRect(50,50,100,100);
+				
+				//回复绘图状态
+				context.fillStyle='#00f';
+				context.save();
+				context.fillRect(50,160,100,100);
+				context.restore();//恢复画布状态
+				context.fillRect(50,270,100,100);
+				context.restore();
+				context.fillRect(50,380,100,100);
+				
+				//擦除canvas
+				canvas.attr('width',canvas.width());
+				canvas.attr('height',canvas.height());
+				
+				//旋转
+				context.rotate(Math.PI/4);
+				context.fillRect(50,50,100,100);
+				
+				//擦除canvas
+				canvas.attr('width',canvas.width());
+				canvas.attr('height',canvas.height());
+				
+				//先平移再旋转
+				context.translate(200,200);
+				context.rotate(Math.PI/4);
+				context.fillRect(0,0,100,100);
+			})
+		</script>
+	</body>
+</html>

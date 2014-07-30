@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="380">
+			<video id="myVideo" width="500" height="380" controls>
+				<source src="php.mp4" type="video/mp4"></source>
+			</video>
+		</canvas>
+		<div>
+			<button id="play">paly</button>
+			<button id="stop">stop</button>
+		</div>
+		<script>
+			$(function(){
+				var canvas=$('#myCanvas');
+				var context=canvas.get(0).getContext('2d');
+				
+				var video=$('#myVideo');
+				$('#play').click(function(){
+					video.get(0).play();
+				})
+				$('#stop').click(function(){
+					video.get(0).pause();
+				})
+			})
+		</script>
+	</body>
+</html>

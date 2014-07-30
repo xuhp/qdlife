@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--<script src="1.js"></script> 
+		<script src="2.js"></script> -->
+	</head>
+	<body>
+		<script>
+			var src=['1.js', '2.js'];
+			for(var i=0 ; i<src.length;i++){
+				var script = document.createElement('script');
+			    script.src =src[i];
+			    script.async=false;
+			    document.head.appendChild(script);
+			}
+		</script>
+		<script>
+			var script = document.createElement('script');
+	    script.src ='3.js';
+	    document.head.appendChild(script);
+		</script>
+	</body>
+</html>

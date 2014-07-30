@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../canvas.css" />
+		<script type="text/javascript" src="../jquery.min.js" ></script>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script>
+			var canvas=$('#myCanvas');
+			var context=canvas.get(0).getContext('2d');
+			
+			var image=new Image();
+			image.src='xiongmao.jpg';
+			$(image).load(function(){
+				context.drawImage(image,0,0,canvas.width(),canvas.height());
+				var imageData=context.getImageData(0,0,canvas.width(),canvas.height());
+				var pixels=imageData.data;
+				var numPixels=pixels.length;
+				
+  		  context.clearRect(0,0,canvas.width(),canvas.height());
+  		  
+  		  for(var i=0;i<numPixels;i++){
+  		  	//反转颜色
+//		  	pixels[i*4]=255-pixels[i*4];
+//		  	pixels[i*4+1]=255-pixels[i*4+1];
+//		  	pixels[i*4+2]=255-pixels[i*4+2];
+					//灰度
+					var average=(pixels[i*4]+pixels[i*4+1]+pixels[i*4+2])/3;
+					pixels[i*4]=average;
+					pixels[i*4+1]=average;
+					pixels[i*4+2]=average;
+  		  }
+  		  
+  		  context.putImageData(imageData,0,0);
+  		  //像素化
+  		  
+			})
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

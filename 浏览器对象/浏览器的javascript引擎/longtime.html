@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="" />
+		<title></title>
+	</head>
+	<body>
+		<div id="myDiv">
+			
+		</div>
+		<script>
+		var data = [12, 123, 1234, 453, 436, 23, 23, 5, 4123, 45, 346, 5634, 2234, 345, 342];
+		for(var i=0;i<data.length;i++){
+			var sum=0;
+			var item=data[i];
+			for(var j=0;j<item;j++){
+				for(var k=0;k<90000;k++){
+					sum+=j*k;
+				}
+			}
+			var div = document.getElementById("myDiv");
+			div.innerHTML += sum + "<br>";
+		}
+			
+	 </script>
+	</body>
+</html>
