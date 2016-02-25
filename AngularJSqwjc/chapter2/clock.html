@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="utf-8">
+		<script src="../angular/angular.min.js"></script>
+		<title>clock</title>
+	</head>
+	<body>
+		<div ng-controller="MyController">
+			<h1>Hello {{ clock }}!</h1>
+		</div>
+		<script>
+			function MyController($scope, $timeout) {
+				var updateClock = function() {
+					$scope.clock = new Date();
+					$timeout(function() {
+						updateClock();
+					}, 1000);
+				}
+				updateClock();
+			}
+		</script>
+	</body>
+</html>
