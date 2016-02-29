@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<script src="../angular/angular.min.js"></script>
+		<title>内置指令</title>
+	</head>
+	<body>
+        <h2>类布尔属性</h2>
+        <h3>ng-href</h3>
+        <!-- 当 href 包含一个 {{expression}} 时总是使用 ng-href -->
+        <a target="_blank" href="{{ myHref }}">I'm feeling lucky, when I load</a><br />
+        <a target="_blank" href="{{ myHref }}">I'm feeling 404</a>
+    
+        
+        <h2>布尔属性</h2>
+        <h3>ng-disabled</h3>
+		<input type="text" ng-model="someProperty1" placeholder="typeToEnabled">
+        <button ng-model="button" ng-disabled="!someProperty1">AButton</button>
+        <br />
+        <textarea ng-disabled="isDisabled">Wait5seconds</textarea>
+    
+        <h3>ng-readonly</h3>
+        <p>Type here to make sibling readonly:</p>
+        <input type="text" ng-model="someProperty2" /><br />
+        <input type="text" ng-readonly="someProperty2" value="Some text here" />    
+        
+        <h3>ng-checked</h3>
+        <label>someProperty = {{someProperty3}}</label>
+        <input type="checkbox" ng-checked="someProperty3" ng-init="someProperty3 = true" ng-model="someProperty3" />
+        
+        <h3>ng-selected</h3>
+        <label>Select Two Fish:</label>
+        <input type="checkbox" ng-model="isTwoFish" /> <br />
+        <select>
+            <option>One Fish</option>
+            <option ng-selected="isTwoFish">Two Fish</option>
+        </select> 
+	</body>
+	<script>
+	angular.module('myApp',[])
+    .run(function($rootScope, $timeout) {
+        $rootScope.isDisabled = true;
+        $timeout(function() {
+            $rootScope.isDisabled = false;
+        }, 5000)    
+    })
+     .run(function($rootScope, $timeout) {
+        $timeout(function(){
+            $rootScope.myHref = 'https://www.baidu.com/';
+        }, 5000)
+    })
+
+	</script>
+</html>
