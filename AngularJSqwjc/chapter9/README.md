@@ -123,6 +123,9 @@ $rootScope是作用域链的起始点，任何嵌套在ng-app内的指令都会�
         
         angular.module('myApp', [])
         .run(function(){
-            $rootScope.someProperty = 
+            $rootScope.someProperty = 'hello computer';
+            $rootScope.someAction = function(){
+                $rootScope.someProperty = 'hello human';    
+            }
         })
     </html>
