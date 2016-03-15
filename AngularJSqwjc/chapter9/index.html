@@ -6,6 +6,12 @@
 		<title>内置指令</title>
 	</head>
 	<body>
+        <div ng-init="greeting = 'helloWorld'">
+            <p ng-bind="greeting"></p>
+        </div>
+        <div ng-init="greeting1 = 'helloWorld'">
+            {{ greeting1 }}
+        </div>
         <h2>类布尔属性</h2>
         <h3>ng-href</h3>
         <!-- 当 href 包含一个 {{expression}} 时总是使用 ng-href -->
